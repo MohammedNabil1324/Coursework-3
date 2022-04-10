@@ -7,7 +7,7 @@ let app = new Vue({
     fetch('https://coursew3.herokuapp.com/collection/Lessons').then(
         function (response, req) {
            response.json().then(function (json) {
-        app.lessons = json;
+               app.lessons = json;
       });
     })
   }
