@@ -27,7 +27,7 @@
         <p>Price:£{{app2.lessons.price}}</p>
         <p >Space:{{app2.lessons.space}}</p>
         <img id="img" v-bind:src="app2.lessons.image" /><br />
-        <button :id="lessons.id-1" @click="addLesson" :disabled='app2.lessons.space==0'>Add to Cart</button>
+        <button :id="app2.lessons.id-1" @click="addLesson" :disabled='app2.lessons.space==0'>Add to Cart</button>
         <div></div>
       </div>
       <div v-else>
