@@ -8,6 +8,7 @@ let app = new Vue({
         function (response, req) {
            response.json().then(function (json) {
                app.lessons = json;
+               console.log(app.lessons);
       });
     })
   }
