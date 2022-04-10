@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 app1.listen(port);
 
 MongoClient.connect(
-  "mongodb+srv://ASDF:ASDF@cluster0.2a6e0.mongodb.net/CW?retryWrites=true&w=majority",
+  "mongodb+srv://ASDF:ASDF@cluster0.2a6e0.mongodb.net/CW",
   (err, client) => {
     db = client.db("CW");
   }
