@@ -19,6 +19,7 @@ MongoClient.connect(
 
 app1.param("collectionName", (req, res, next, collectionName) => {
   req.collection = db.collection(collectionName);
+  res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
   return next();
 });
 
