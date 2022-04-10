@@ -21,13 +21,13 @@
       </header>
       <div v-if='showProduct'>
       <main id="lessons" v-for="lessons in lessons">
-        <h2>{{app2.lessons.subject}}</h2>
-        <span id="icon"><i :class="app2.lessons.icon"></i></span>
-        <p>Location:{{app2.lessons.location}}</p>
-        <p>Price:£{{app2.lessons.price}}</p>
-        <p >Space:{{app2.lessons.space}}</p>
-        <img id="img" v-bind:src="app2.lessons.image" /><br />
-        <button :id="app2.lessons.id-1" @click="addLesson" :disabled='app2.lessons.space==0'>Add to Cart</button>
+        <h2>{{lessons.subject}}</h2>
+        <span id="icon"><i :class="lessons.icon"></i></span>
+        <p>Location:{{lessons.location}}</p>
+        <p>Price:£{{lessons.price}}</p>
+        <p >Space:{{lessons.space}}</p>
+        <img id="img" v-bind:src="lessons.image" /><br />
+        <button :id="lessons.id-1" @click="addLesson" :disabled='lessons.space==0'>Add to Cart</button>
         <div></div>
       </div>
       <div v-else>
