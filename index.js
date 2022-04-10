@@ -7,6 +7,12 @@ var http = require("http");
 var app1 = express();
 let db;
 
+app1.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Headers","*");
+  next();
+});
+
 const port = process.env.PORT || 3000;
 app1.listen(port);
 
@@ -31,12 +37,6 @@ app1.get("/collection/:collectionName", (req, res, next) => {
     if (e) return next(e);
     res.send(results);
   });
-});
-
-app1.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin","*");
-  res.header("Access-Control-Allow-Headers","*");
-  next();
 });
 
 app1.use(function (req, res, next) {
