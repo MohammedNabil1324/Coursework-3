@@ -19,7 +19,7 @@
         <br />
       </header>
       <div v-if="showProduct">
-        <div v-for="lesson in lessons">
+        <main v-for="lesson in lessons">
           <h2>{{lesson.subject}}</h2>
           <span id="icon"><i :class="lesson.icon"></i></span>
           <p>Location:{{lesson.location}}</p>
@@ -59,6 +59,7 @@
               Checkout
             </button>
           </div>
+        </main>
       </div>
       <script>
         let app2 = new Vue({
