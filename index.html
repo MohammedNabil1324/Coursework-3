@@ -19,15 +19,20 @@
         <br />
       </header>
       <div v-if="showProduct">
-        <main id="lesson" v-for="lesson in lesson">
-        <h2>{{lesson.0.subject}}</h2>
-        <span id="icon"><i :class="lesson.icon"></i></span>
-        <p>Location:{{lesson.location}}</p>
-        <p>Price:£{{lesson.price}}</p>
-        <p >Space:{{lesson.space}}</p>
-        <img id="img" v-bind:src="lesson.image" /><br />
-        <button :id="lesson.id-1" @click="addLesson" :disabled='lesson.space==0'>Add to Cart</button>
-        <div></div>
+        <main v-for="lesson in lesson">
+          <h2>{{lesson.subject}}</h2>
+          <span id="icon"><i :class="lesson.icon"></i></span>
+          <p>Location:{{lesson.location}}</p>
+          <p>Price:£{{lesson.price}}</p>
+          <p>Space:{{lesson.space}}</p>
+          <img id="img" v-bind:src="lesson.image" /><br />
+          <button
+            :id="lesson.id-1"
+            @click="addLesson"
+            :disabled="lesson.space==0"
+          >
+            Add to Cart
+          </button>
           <br />
         </div>
           <div v-else>
