@@ -66,7 +66,7 @@
           el: "#app",
           data: {
             sitename: "Lessons",
-            lesson: [],
+            lesson: {},
             cart: [],
             showProduct: true,
             disabled: false,
@@ -115,7 +115,7 @@
             fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
               function (response) {
                 response.json().then(function (json) {
-                  app2.lesson = JSON.stringify(json);
+                  app2.lesson = json;
                 });
               }
             );
