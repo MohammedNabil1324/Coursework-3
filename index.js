@@ -1,15 +1,15 @@
- const express = require("express");
- const path = require("path");
- const fs = require("fs");
- const MongoClient = require("mongodb").MongoClient;
- const http = require("http");
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const MongoClient = require("mongodb").MongoClient;
+const http = require("http");
 
 var app1 = express();
 let db;
 
-app1.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin","*");
-  res.header("Access-Control-Allow-Headers","*");
+app1.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 
