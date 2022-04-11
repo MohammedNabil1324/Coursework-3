@@ -19,7 +19,7 @@
         <br />
       </header>
       <div v-if="showProduct">
-        <main v-for="lesson in lessons">
+        <main v-for="lesson in lesson">
           <h2>{{lesson.subject}}</h2>
           <span id="icon"><i :class="lesson.icon"></i></span>
           <p>Location:{{lesson.location}}</p>
@@ -66,7 +66,7 @@
           el: "#app",
           data: {
             sitename: "Lessons",
-            lessons: {},
+            lesson: {},
             cart: [],
             showProduct: true,
             disabled: false,
@@ -75,10 +75,10 @@
           },
           methods: {
             addLesson: function (e) {
-              this.cart.push(app.lessons[e.target.id].id);
-              this.lessons[e.target.id].space =
-                this.lessons[e.target.id].space - 1;
-              if (this.lessons[e.target.id].space == 0) {
+              this.cart.push(app.lesson[e.target.id].id);
+              this.lesson[e.target.id].space =
+                this.lesson[e.target.id].space - 1;
+              if (this.lesson[e.target.id].space == 0) {
                 disabled = true;
               }
             },
@@ -115,7 +115,7 @@
             fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
               function (response) {
                 response.json().then(function (json) {
-                  app.lessons = json;
+                  app2.lesson = json;
                 });
               }
             );
