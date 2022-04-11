@@ -19,7 +19,7 @@
         <br />
       </header>
       <div v-if="showProduct">
-        <main v-for="lesson in lessons">
+        <div v-for="lesson in lessons">
           <h2>{{lesson.subject}}</h2>
           <span id="icon"><i :class="lesson.icon"></i></span>
           <p>Location:{{lesson.location}}</p>
