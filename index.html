@@ -115,8 +115,7 @@
             fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
               function (response) {
                 response.json().then(function (json) {
-                  app2.lessons = json;
-                  console.log(app.lessons);
+                  app.lessons = json;
                 });
               }
             );
