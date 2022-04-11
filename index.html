@@ -20,16 +20,16 @@
       </header>
       <div v-if="showProduct">
         <main v-for="lesson in lesson">
-          <h2>{{app2.lesson.subject}}</h2>
-          <span id="icon"><i :class="app2.lesson.icon"></i></span>
-          <p>Location:{{app2.lesson.location}}</p>
-          <p>Price:£{{app2.lesson.price}}</p>
-          <p>Space:{{app2.lesson.space}}</p>
-          <img id="img" v-bind:src="app2.lesson.image" /><br />
+          <h2>{{lesson.subject}}</h2>
+          <span id="icon"><i :class="lesson.icon"></i></span>
+          <p>Location:{{lesson.location}}</p>
+          <p>Price:£{{lesson.price}}</p>
+          <p>Space:{{lesson.space}}</p>
+          <img id="img" v-bind:src="lesson.image" /><br />
           <button
-            :id="app2.lesson.id-1"
+            :id="lesson.id-1"
             @click="addLesson"
-            :disabled="app2.lesson.space==0"
+            :disabled="lesson.space==0"
           >
             Add to Cart
           </button>
@@ -116,6 +116,7 @@
               function (response) {
                 response.json().then(function (json) {
                   app2.lesson = json;
+                  console.log(app2.lesson);
                 });
               }
             );
