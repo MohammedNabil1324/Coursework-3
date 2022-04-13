@@ -19,7 +19,7 @@
         <br />
       </header>
       <div v-if="showProduct">
-        <main v-for="lesson in lesson" :key="lesson._id">
+        <main v-for="lesson in lesson" :key="lesson.id">
           <h2>{{lesson.subject}}</h2>
           <span id="icon"><i :class="lesson.icon"></i></span>
           <p>Location:{{lesson.location}}</p>
@@ -27,7 +27,7 @@
           <p>Space:{{lesson.space}}</p>
           <img id="img" v-bind:src="lesson.image" /><br />
           <button
-            :id="lesson._id-1"
+            :id="lesson.id-1"
             @click="addLesson"
             :disabled="lesson.space==0"
           >
