@@ -85,6 +85,10 @@
               }
             },
 
+            addToCart: function() {
+              this.cart.push( this.lesson.id );
+            },
+
             showCheckout: function () {
               this.showProduct = this.showProduct ? false : true;
             },
