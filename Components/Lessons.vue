@@ -20,21 +20,9 @@
 <script>
 export default {
   name: "Lessons",
+  props: ['lesson'],
   data() {
-    return {
-      lesson: {
-        created: function () {
-          fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
-            function (response) {
-              response.json().then(function (json) {
-                lesson = json;
-                console.log(lesson);
-              });
-            }
-          );
-        },
-      },
-    };
+    return {};
   },
   methods: {
     add(lesson) {

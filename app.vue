@@ -11,7 +11,7 @@
       <br />
     </header>
     <div v-if="showLesson">
-      <lesson-list @addlesson="addToCart"></lesson-list>
+      <lesson-list :lesson="lesson" @addlesson="addToCart"></lesson-list>
     </div>
     <div v-else>
       <checkout :cart="cart" @removelesson="removeProduct"></checkout>
@@ -31,6 +31,18 @@ export default {
       showLesson: true,
       disabled: false,
       cart: [],
+      lesson: {
+        created: function () {
+          fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
+            function (response) {
+              response.json().then(function (json) {
+                lesson = json;
+                console.log(lesson);
+              });
+            }
+          );
+        },
+      },
     };
   },
   methods: {
