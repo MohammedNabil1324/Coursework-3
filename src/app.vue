@@ -2,9 +2,9 @@
   <div id="app">
     <header>
       <script src="https://unpkg.com/vue"></script>
-      <link rel="stylesheet" href="CSS/style.css" />
-      <link rel="manifest" href="index.webmanifest" />
-      <script src="index.js"></script>
+      <link rel="stylesheet" href="../src/CSS/style.css" />
+      <link rel="manifest" href="../index.webmanifest" />
+      <script src="../index.js"></script>
       <h1>{{ sitename }}</h1>
       <button id="cart" @click="showCheckout" :disabled="cartCount < 1">
         <i class="fas fa-shopping-cart"></i> Cart({{ cartCount }})
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import lessons from "/Components/Lessons.vue";
-import cart from "/Components/Cart.vue";
+import lessons from "/src/Components/Lessons.vue";
+import cart from "/src/Components/Cart";
 export default {
   name: "app",
   components: { lessons, cart },
@@ -69,6 +69,6 @@ export default {
   },
 };
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
+  navigator.serviceWorker.register("../service-worker.js");
 }
 </script>
