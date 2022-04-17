@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <header>
+      <script src="https://unpkg.com/vue"></script>
       <link rel="stylesheet" href="CSS/style.css" />
       <link rel="manifest" href="index.webmanifest" />
       <script src="index.js"></script>
