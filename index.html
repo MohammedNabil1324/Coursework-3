@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coursework 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>{{sitename}}</h1>
+        <button id="cart" v-on:click="showCheckout" :disabled="cartCount<1">
+          <i class="fas fa-shopping-cart"></i> Cart({{cartCount}})
+        </button>
+        <br />
+      </header>
+      <div v-if="showProduct">
+        <main v-for="lesson in lesson" :key="lesson.id">
+          <h2>{{lesson.subject}}</h2>
+          <span id="icon"><i :class="lesson.icon"></i></span>
+          <p>Location:{{lesson.location}}</p>
+          <p>Price:£{{lesson.price}}</p>
+          <p>Space:{{lesson.space}}</p>
+          <img id="img" v-bind:src="lesson.image" /><br />
+          <button
+            :id="lesson.id-1"
+            @click="addLesson"
+            :disabled="lesson.space==0"
+          >
+            Add to Cart
+          </button>
+          <p :disabled="lesson.space!=0">Out of Stock</p>
+          <br />
+        </div>
+          <div v-else>
+            <h2>Checkout</h2>
+            <form>
+              <label>Name:</label>
+              <input
+                type="text"
+                v-model="detail"
+                id="detail"
+                type="text"
+                required
+              /><br />
+              <label>Phone Number:</label>
+              <input
+                type="text"
+                v-model="detail1"
+                id="detail1"
+                type="number"
+                required
+              /><br />
+            </form>
+
+            <button :disabled="detail && detail1 === ''" @click="submitForm">
+              Checkout
+            </button>
+          </div>
+        </main>
+      </div>
+      <script>
+        let app2 = new Vue({
+          el: "#app",
+          data: {
+            sitename: "Lessons",
+            lesson: {},
+            cart: [],
+            showProduct: true,
+            disabled: false,
+            detail: "",
+            detail1: "",
+          },
+          methods: {
+            addLesson: function (e) {
+              this.cart.push(app.lesson[e.target.id].id);
+              this.lesson[e.target.id].space =
+                this.lesson[e.target.id].space - 1;
+              if (this.lesson[e.target.id].space == 0) {
+                disabled = true;
+              }
+            },
+
+            addToCart: function() {
+              this.cart.push( this.lesson.id );
+            },
+
+            showCheckout: function () {
+              this.showProduct = this.showProduct ? false : true;
+            },
+
+            submitForm: function () {
+              var Name = document.getElementById("detail").value;
+              var PhoneNumber = document.getElementById("detail1").value;
+              var NameRegex = /^[a-z ,.'-]+$/i;
+              var PhoneRegex =
+                /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+              var NameResult = NameRegex.test(Name);
+              var PhoneResult = PhoneRegex.test(PhoneNumber);
+              alert(
+                "Name Approval:" +
+                  NameResult +
+                  ", Phone Approval: " +
+                  PhoneResult
+              );
+              if (NameResult == "True" && PhoneResult == "True") {
+                window.location.reload();
+              }
+            },
+          },
+          computed: {
+            cartCount: function () {
+              return this.cart.length || "";
+            },
+          },
+          created: function () {
+            fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
+              function (response) {
+                response.json().then(function (json) {
+                  app2.lesson = json;
+                  console.log(app2.lesson);
+                });
+              }
+            );
+          },
+        });
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js');
+        };
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "coursework-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "mongodb": "^4.5.0",
+    "path": "^0.12.7",
+    "vue": "^3.2.31"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohammedNabil1324/Coursework-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohammedNabil1324/Coursework-3/issues"
+  },
+  "homepage": "https://github.com/MohammedNabil1324/Coursework-3#readme"
+}
