@@ -1,7 +1,0 @@
-{
-    "name": "Classes PWA",
-    "short_name": "Classes",
-    "description":"List of Classes",
-    "start_url":"index.html",
-    "display":"fullscreen"
-}
