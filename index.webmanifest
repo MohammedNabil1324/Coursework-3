@@ -1,0 +1,14 @@
+{
+    "name": "Classes PWA",
+    "short_name": "Classes",
+    "description":"List of Classes",
+    "icons":[
+        {
+            "src":"Assets/mortarboard.png",
+            "sizes":"512x512",
+            "type":"image/png"
+        }
+    ],
+    "start_url":"index.html",
+    "display":"fullscreen"
+}
