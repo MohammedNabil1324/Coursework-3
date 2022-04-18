@@ -1,13 +1,9 @@
 <template>
   <div id="app">
     <header>
-      <script src="https://unpkg.com/vue"></script>
-      <link rel="stylesheet" href="../src/CSS/style.css" />
-      <link rel="manifest" href="../index.webmanifest" />
-      <script src="../index.js"></script>
       <h1>{{ sitename }}</h1>
-      <button id="cart" @click="showCheckout" :disabled="cartCount < 1">
-        <i class="fas fa-shopping-cart"></i> Cart({{ cartCount }})
+      <button id="cart" @click="showCheckout" :disabled="this.cart.length < 1">
+        <i class="fas fa-shopping-cart"></i> Cart({{ this.cart.length }})
       </button>
       <br />
     </header>
@@ -22,7 +18,7 @@
 
 <script>
 import lessons from "/src/Components/Lessons.vue";
-import cart from "/src/Components/Cart";
+import cart from "/src/Components/Cart.vue";
 export default {
   name: "app",
   components: { lessons, cart },
@@ -61,14 +57,6 @@ export default {
       this.cart.splice(this.cart.indexOf(lesson), 1);
       this.lesson[e.target.id].space = this.lesson[e.target.id].space + 1;
     },
-    computed: {
-      cartCount: function () {
-        return this.cart.length || "";
-      },
-    },
   },
 };
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("../service-worker.js");
-}
 </script>
