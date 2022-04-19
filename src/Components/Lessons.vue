@@ -13,16 +13,14 @@
     >
       Add to Cart
     </button>
-    <span v-if="lesson.Spaces ==0">
-      All out!
-    </span>
+    <span v-if="lesson.Spaces == 0"> All out! </span>
     <br />
   </main>
 </template>
 <script>
 export default {
   name: "Lessons",
-  props: ['lesson'],
+  props: ["lesson"],
   emits: ["addlesson"],
   data() {
     return {};
@@ -30,7 +28,7 @@ export default {
   methods: {
     add(lesson) {
       this.$emit("addlesson", lesson);
-      lesson.Spaces=lesson.Spaces-1;
+      lesson.Spaces = lesson.Spaces - 1;
     },
   },
 };

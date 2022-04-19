@@ -35,7 +35,7 @@ export default {
       disabled: false,
       cart: [],
       lesson: [],
-    }
+    };
   },
   methods: {
     showCheckout() {
@@ -48,11 +48,13 @@ export default {
       this.cart.splice(this.cart.indexOf(lesson), 1);
     },
   },
- async mounted() {
-      const data = await fetch("https://coursew3.herokuapp.com/collection/Lessons");
-      const newdata = await data.json();
-      console.log(newdata);
-      this.lesson=newdata;
-    }
-}
+  async mounted() {
+    const data = await fetch(
+      "https://coursew3.herokuapp.com/collection/Lessons"
+    );
+    const newdata = await data.json();
+    console.log(newdata);
+    this.lesson = newdata;
+  },
+};
 </script>

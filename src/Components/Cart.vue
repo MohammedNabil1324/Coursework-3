@@ -3,7 +3,7 @@
   <div v-for="lesson in cart" :key="lesson.id">
     {{ lesson.Topic }} <button @click="remove(lesson)">remove</button>
   </div>
-  <br>
+  <br />
   <form>
     <label>Name:</label>
     <input v-model="detail" id="detail" type="text" required /><br />
@@ -18,7 +18,7 @@
 export default {
   name: "cart",
   props: ["cart"],
-  emits:["removelesson"],
+  emits: ["removelesson"],
   data() {
     return {
       detail: "",
@@ -28,7 +28,7 @@ export default {
   methods: {
     remove(lesson) {
       this.$emit("removelesson", lesson);
-      lesson.Spaces=lesson.Spaces+1;
+      lesson.Spaces = lesson.Spaces + 1;
     },
     submitForm: function () {
       var Name = document.getElementById("detail").value;
