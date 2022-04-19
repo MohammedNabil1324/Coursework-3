@@ -12,7 +12,7 @@
         </button>
         <br />
       </header>
-      <div v-if="showLesson" @load="created">
+      <div v-if="showLesson">
         <lessons :lesson="lesson" @addlesson="addToCart"></lessons>
       </div>
       <div v-else>
@@ -35,7 +35,7 @@ export default {
       disabled: false,
       cart: [],
       lesson: [],
-    };
+    }
   },
   methods: {
     showCheckout() {
@@ -47,14 +47,12 @@ export default {
     removelesson(lesson) {
       this.cart.splice(this.cart.indexOf(lesson), 1);
     },
-    created() {
-      fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
-        function (response) {
-        response.json().then(function (json) {
-          console.log(json)
-        });
-      });
+  },
+ async mounted() {
+      const data = await fetch("https://coursew3.herokuapp.com/collection/Lessons");
+      const newdata = await data.json();
+      console.log(newdata);
+      this.lesson=newdata;
     }
-  }
 }
 </script>

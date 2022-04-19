@@ -15,8 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node /public/index.js",
+    "test": "echo \"Error: no test specified\"",
+    "start": "node index.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
