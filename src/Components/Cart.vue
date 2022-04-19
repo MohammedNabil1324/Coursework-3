@@ -29,9 +29,6 @@ export default {
     remove(lesson) {
       this.$emit("removelesson", lesson);
       lesson.Spaces=lesson.Spaces+1;
-      if(this.cart.length==0){
-        this.showLesson=true;
-      }
     },
     submitForm: function () {
       var Name = document.getElementById("detail").value;

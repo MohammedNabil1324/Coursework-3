@@ -1,20 +1,24 @@
 <template>
-<body>
-  <div id="app">
-    <header>
-      <h1>{{ sitename }}</h1>
-      <button id="cart" @click="showCheckout" :disabled="this.cart.length < 1">
-        <i class="fas fa-shopping-cart"></i> Cart({{ this.cart.length }})
-      </button>
-      <br />
-    </header>
-    <div v-if="showLesson">
-      <lessons :lesson="lesson" @addlesson="addToCart"></lessons>
+  <body>
+    <div id="app">
+      <header>
+        <h1>{{ sitename }}</h1>
+        <button
+          id="cart"
+          @click="showCheckout"
+          :disabled="this.cart.length < 1"
+        >
+          <i class="fas fa-shopping-cart"></i> Cart({{ this.cart.length }})
+        </button>
+        <br />
+      </header>
+      <div v-if="showLesson" @load="created">
+        <lessons :lesson="lesson" @addlesson="addToCart"></lessons>
+      </div>
+      <div v-else>
+        <cart :cart="cart" @removelesson="removelesson"></cart>
+      </div>
     </div>
-    <div v-else>
-      <cart :cart="cart" @removelesson="removelesson"></cart>
-    </div>
-  </div>
   </body>
 </template>
 
@@ -30,7 +34,7 @@ export default {
       showLesson: true,
       disabled: false,
       cart: [],
-      lesson: []
+      lesson: [],
     };
   },
   methods: {
@@ -39,19 +43,18 @@ export default {
     },
     addToCart(lesson) {
       this.cart.push(lesson);
-      this.lesson.Spaces=this.lesson.Spaces-1;
     },
     removelesson(lesson) {
       this.cart.splice(this.cart.indexOf(lesson), 1);
     },
-    mounted: function () {
-          fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
-            function (response) {
-              response.json().then(function (json) {
-              });
-            }
-          );
-        },
-  },
-};
+    created() {
+      fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
+        function (response) {
+        response.json().then(function (json) {
+          console.log(json)
+        });
+      });
+    }
+  }
+}
 </script>
