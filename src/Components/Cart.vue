@@ -17,6 +17,7 @@
 export default {
   name: "cart",
   props: ["cart"],
+  emits:["removelesson"],
   data() {
     return {
       detail: "",

@@ -1,4 +1,5 @@
 <template>
+<body>
   <div id="app">
     <header>
       <h1>{{ sitename }}</h1>
@@ -8,17 +9,18 @@
       <br />
     </header>
     <div v-if="showLesson">
-      <lesson-list :lesson="lesson" @addlesson="addToCart"></lesson-list>
+      <lessons :lesson="lesson" @addlesson="addToCart"></lessons>
     </div>
     <div v-else>
-      <checkout :cart="cart" @removelesson="removeProduct"></checkout>
+      <cart :cart="cart" @removelesson="removelesson"></cart>
     </div>
   </div>
+  </body>
 </template>
 
 <script>
-import lessons from "/src/Components/Lessons.vue";
-import cart from "/src/Components/Cart.vue";
+import lessons from "./Components/Lessons.vue";
+import cart from "./Components/Cart.vue";
 export default {
   name: "app",
   components: { lessons, cart },
@@ -28,18 +30,7 @@ export default {
       showLesson: true,
       disabled: false,
       cart: [],
-      lesson: {
-        created: function () {
-          fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
-            function (response) {
-              response.json().then(function (json) {
-                lesson = json;
-                console.log(lesson);
-              });
-            }
-          );
-        },
-      },
+      lesson: []
     };
   },
   methods: {
@@ -48,15 +39,19 @@ export default {
     },
     addToCart(lesson) {
       this.cart.push(lesson);
-      this.lesson[e.target.id].space = this.lesson[e.target.id].space - 1;
-      if (this.lesson[e.target.id].space == 0) {
-        disabled = true;
-      }
     },
-    removeProduct(lesson) {
+    removelesson(lesson) {
       this.cart.splice(this.cart.indexOf(lesson), 1);
-      this.lesson[e.target.id].space = this.lesson[e.target.id].space + 1;
     },
+    created: function () {
+          fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
+            function (response) {
+              response.json().then(function (json) {
+                lesson=json;
+              });
+            }
+          );
+        },
   },
 };
 </script>
