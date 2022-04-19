@@ -1,13 +1,14 @@
 <template>
   <h2>Checkout</h2>
   <div v-for="lesson in cart" :key="lesson.id">
-    {{ lesson.id }} <button @click="remove(lesson)">remove</button>
+    {{ lesson.Topic }} <button @click="remove(lesson)">remove</button>
   </div>
+  <br>
   <form>
     <label>Name:</label>
     <input v-model="detail" id="detail" type="text" required /><br />
     <label>Phone Number:</label>
-    <input v-model="detail1" id="detail1" type="number" required /><br />
+    <input v-model="detail1" id="detail1" type="text" required /><br />
   </form>
   <button :disabled="detail && detail1 === ''" @click="submitForm">
     Checkout
@@ -27,6 +28,10 @@ export default {
   methods: {
     remove(lesson) {
       this.$emit("removelesson", lesson);
+      lesson.Spaces=lesson.Spaces+1;
+      if(this.cart.length==0){
+        this.showLesson=true;
+      }
     },
     submitForm: function () {
       var Name = document.getElementById("detail").value;
@@ -38,7 +43,7 @@ export default {
       var PhoneResult = PhoneRegex.test(PhoneNumber);
       alert("Name Approval:" + NameResult + ", Phone Approval: " + PhoneResult);
       if (NameResult == "True" && PhoneResult == "True") {
-        window.location.reload();
+        window.history.go(0);
       }
     },
   },

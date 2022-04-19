@@ -13,7 +13,9 @@
     >
       Add to Cart
     </button>
-    <p :disabled="lesson.Spaces != 0">Out of Stock</p>
+    <span v-if="lesson.Spaces ==0">
+      All out!
+    </span>
     <br />
   </main>
 </template>
@@ -28,6 +30,7 @@ export default {
   methods: {
     add(lesson) {
       this.$emit("addlesson", lesson);
+      lesson.Spaces=lesson.Spaces-1;
     },
   },
 };

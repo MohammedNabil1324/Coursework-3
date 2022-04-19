@@ -35,19 +35,19 @@ export default {
   },
   methods: {
     showCheckout() {
-      this.showProduct = this.showProduct ? false : true;
+      this.showLesson = this.showLesson ? false : true;
     },
     addToCart(lesson) {
       this.cart.push(lesson);
+      this.lesson.Spaces=this.lesson.Spaces-1;
     },
     removelesson(lesson) {
       this.cart.splice(this.cart.indexOf(lesson), 1);
     },
-    created: function () {
+    mounted: function () {
           fetch("https://coursew3.herokuapp.com/collection/Lessons").then(
             function (response) {
               response.json().then(function (json) {
-                lesson=json;
               });
             }
           );
